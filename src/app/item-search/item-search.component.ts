@@ -19,7 +19,8 @@ import { ItemDatasource } from "../services/item-datasource";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
-
+//FIXME: deja importé dans appmodule, donc...
+import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 
 @Component({
   selector: "app-item-search",
@@ -36,7 +37,7 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild("input") input: ElementRef;
-  constructor(private itemService: ItemService, public dialog:MatDialog) {}
+  constructor(private itemService: ItemService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.dataSource = new ItemDatasource(this.itemService);
@@ -69,20 +70,20 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ItemDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
+    const dialogRef = this.dialog.open(ItemDialogComponent, {
+      width: "250px",
+      height: "100px",
+      data: { id: 1, title: "test" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      console.log("The dialog was closed");
+      //this.animal = result;
     });
   }
 
-
   onCreateRecord(): void {
-      console.log('create click')
+    console.log("create click");
     /*const dialogRef = this.dialog.open(AvEditorComponent, {
       minWidth: '450px',
       height: '75vh',
@@ -100,7 +101,8 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
   }
 
   onEditRecord(): void {
-    console.log('edit click')
+    console.log("edit click");
+    this.openDialog();
     /*const dialogRef = this.dialog.open(AvEditorComponent, {
       minWidth: '450px',
       maxHeight: '75vh',
