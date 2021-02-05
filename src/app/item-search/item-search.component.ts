@@ -18,6 +18,8 @@ import {
 import { ItemDatasource } from "../services/item-datasource";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
+import { MatDialog } from "@angular/material/dialog";
+
 
 @Component({
   selector: "app-item-search",
@@ -34,7 +36,7 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild("input") input: ElementRef;
-  constructor(private itemService: ItemService) {}
+  constructor(private itemService: ItemService, public dialog:MatDialog) {}
 
   ngOnInit() {
     this.dataSource = new ItemDatasource(this.itemService);
@@ -64,6 +66,18 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
       this.paginator.pageIndex,
       this.paginator.pageSize
     );
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ItemDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
 
