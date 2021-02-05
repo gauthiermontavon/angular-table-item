@@ -18,7 +18,8 @@ import {
 import { ItemDatasource } from "../services/item-datasource";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+
 //FIXME: deja importé dans appmodule, donc...
 import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 
@@ -70,11 +71,15 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ItemDialogComponent, {
-      width: "250px",
-      height: "100px",
-      data: { id: 1, title: "test" }
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "250px";
+    dialogConfig.data = { id: 1, title: "test" };
+    dialogConfig.position = {
+        top: "0",
+        left: "0"
+      };
+
+    const dialogRef = this.dialog.open(ItemDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");

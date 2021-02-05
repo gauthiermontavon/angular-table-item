@@ -34,6 +34,9 @@ import { ItemDialogComponent } from './item-search//item-dialog/item-dialog.comp
     DashboardComponent,
     ItemDialogComponent
   ],
+   entryComponents: [
+    ItemDialogComponent
+  ],
   bootstrap: [AppComponent],
   providers: [ItemService]
 })
