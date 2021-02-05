@@ -7,38 +7,22 @@
     <mat-spinner></mat-spinner>
   </div>
 
-  <mat-toolbar class="av-toolbar">
-    <mat-toolbar-row class="av-left" *ngIf="!isTableReadOnly">
+  <mat-toolbar>
+    <mat-toolbar-row>
       <button mat-button color="primary" (click)="onCreateRecord()">
-        Add
+        Add <mat-icon>add_box</mat-icon>
       </button>
-      <span *ngIf="isSelectionEditable">
-        <button mat-button color="primary" (click)="onEditRecord()">
+      <span>
+      <button mat-button color="primary" (click)="onEditRecord()">
           Edit <mat-icon>mode_edit</mat-icon>
-        </button>
+      </button>
       </span>
 
-      <span *ngIf="isSelectionDeletable">
+      <span>
         <button mat-button color="warn" (click)="onDelete()">
           Delete <mat-icon>delete</mat-icon>
         </button>
       </span>
-
-      <span class="push bottom av-toolbar-infos">
-        0 / 0
-        <!--{{numberOfSelectedItems}} / {{dataSource.data.length}}-->
-      </span>
-    </mat-toolbar-row>
-
-    <mat-toolbar-row
-      *ngIf="isTableReadOnly"
-      style="justify-content: normal"
-      class="status-reason"
-    >
-      The table is in read-only mode
-      <span *ngIf="getTableStatusReason()"
-        >&nbsp;({{getTableStatusReason()}})</span
-      >
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-table class="items-table mat-elevation-z8" [dataSource]="dataSource">
@@ -82,4 +66,3 @@
     [pageSizeOptions]="[3, 5, 10]"
   ></mat-paginator>
 </div>
-

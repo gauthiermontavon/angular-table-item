@@ -65,4 +65,68 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
       this.paginator.pageSize
     );
   }
+
+
+  onCreateRecord(): void {
+      console.log('create click')
+    /*const dialogRef = this.dialog.open(AvEditorComponent, {
+      minWidth: '450px',
+      height: '75vh',
+      // 13.06.2018 panelClass to set width and height was KO
+      data: {dataColumns: this.dataColumns}
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (this.transaction) {
+          this.transaction.emit(result);
+        }
+      }
+    );*/
+  }
+
+  onEditRecord(): void {
+    console.log('edit click')
+    /*const dialogRef = this.dialog.open(AvEditorComponent, {
+      minWidth: '450px',
+      maxHeight: '75vh',
+      // 13.06.2018 panelClass to set width and height was KO
+      data: {dataColumns: this.dataColumns, edited: this.selectedRows[0]}
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        // return the object updated/created in the form to a transaction manager
+        if (this.transaction) {
+          this.transaction.emit(result);
+        }
+      }
+    );*/
+  }
+
+  onDelete(): void {
+    /*if (!this.demoMode) {
+      const dialogRef = this.dialog.open(AvConfirmDialogComponent, {
+        minWidth: '450px',
+        maxHeight: '75vh'
+      });
+
+      dialogRef.afterClosed().subscribe(
+        result => {
+          switch (result) {
+            case AvConfirmDialogResponseType.OK: {
+              if (this.transaction) {
+                this.transaction.emit({deletedRecords: this.selectedRows});
+              }
+              break;
+            }
+            default:
+              break;
+          }
+        }
+      );
+    } else {
+      this.deleteRow();
+    }*/
+  }
 }
