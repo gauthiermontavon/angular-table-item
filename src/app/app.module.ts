@@ -15,7 +15,7 @@ import { ItemService } from "./services/item.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 /*import { MaterialDatatableModule } from "./material/material-datatable/material-datatable.module";*/
 import { MaterialFullModule } from "./material/material-full.module";
-import { ItemDialogComponent } from './item-search//item-dialog/item-dialog.component';
+import { ItemDialogComponent } from "./item-search//item-dialog/item-dialog.component";
 
 @NgModule({
   imports: [
@@ -34,9 +34,7 @@ import { ItemDialogComponent } from './item-search//item-dialog/item-dialog.comp
     DashboardComponent,
     ItemDialogComponent
   ],
-   entryComponents: [
-    ItemDialogComponent
-  ],
+  entryComponents: [ ItemDialogComponent],
   bootstrap: [AppComponent],
   providers: [ItemService]
 })

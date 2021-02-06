@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject, of } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
 
 export class ItemDatasource implements DataSource<Item> {
-  private totalCount: number;
+  public totalCount: number;
   itemsSubject = new BehaviorSubject<Item[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -38,7 +38,7 @@ export class ItemDatasource implements DataSource<Item> {
         finalize(() => this.loadingSubject.next(false))
       )
 
-      .subscribe((items:ServiceResultItems)  => {
+      .subscribe((items: ServiceResultItems) => {
         console.log("COUCOU Jai bien recu les résultats");
         console.log("total:" + items.meta.totalCount);
         this.totalCount = items.meta.totalCount;

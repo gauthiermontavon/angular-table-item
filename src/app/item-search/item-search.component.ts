@@ -21,6 +21,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 //FIXME: deja importé dans appmodule, donc...
+
 import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 
 @Component({
@@ -74,10 +75,7 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "250px";
     dialogConfig.data = { id: 1, title: "test" };
-    dialogConfig.position = {
-        top: "0",
-        left: "0"
-      };
+   
 
     const dialogRef = this.dialog.open(ItemDialogComponent, dialogConfig);
 
