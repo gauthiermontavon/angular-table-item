@@ -1,41 +1,44 @@
-<hello name="{{ name }}"></hello>
-
-<nav>
-	<a routerLink="/items">Items</a>
-	<a routerLink="/dashboard">Dashboard</a>
-</nav>
-<router-outlet></router-outlet>
 
 
 
-<mat-toolbar class="example-header">Header</mat-toolbar>
+<mat-toolbar color="primary" class="example-header">Project Name</mat-toolbar>
 
 <mat-sidenav-container class="example-container">
 	<mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="false" [fixedTopGap]="0"
 		[fixedBottomGap]="0">
 
 		<mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <span>Custom Toolbar</span>
-      </mat-toolbar-row>
+			<mat-toolbar-row>
 
-      <mat-toolbar-row>
-        <span>Second Line</span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
-      </mat-toolbar-row>
+				<a routerLink="/items">
+					<mat-icon>list</mat-icon>
+				</a>
 
-      <mat-toolbar-row>
-        <span>Third Line</span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
-      </mat-toolbar-row>
-    </mat-toolbar>
+			</mat-toolbar-row>
+
+			<mat-toolbar-row>
+				<mat-icon>build</mat-icon>
+			</mat-toolbar-row>
+
+			<mat-toolbar-row>
+				<mat-icon>supervisor_account</mat-icon>
+			</mat-toolbar-row>
+			<mat-toolbar-row>
+				<a routerLink="/dashboard">
+					<mat-icon>settings</mat-icon>
+				</a>
+
+			</mat-toolbar-row>
+			<mat-toolbar-row>
+				<mat-icon>help</mat-icon>
+			</mat-toolbar-row>
+		</mat-toolbar>
 
 	</mat-sidenav>
 
-	<mat-sidenav-content>
-		<p>content side nav</p>
+	<mat-sidenav-content style="min-height:500px;padding:50px;">
+
+
+		<router-outlet></router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>

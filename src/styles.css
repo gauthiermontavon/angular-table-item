@@ -1,3 +1,10 @@
 /*@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 => doesnt work in stackblitz
 */
+
+.example-sidenav  a
+ {
+  text-decoration: none !important;
+  color:inherit;
+
+}
