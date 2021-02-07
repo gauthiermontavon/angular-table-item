@@ -1,7 +1,41 @@
 <hello name="{{ name }}"></hello>
 
 <nav>
-  <a routerLink="/items">Items</a>
-  <a routerLink="/dashboard">Dashboard</a>
+	<a routerLink="/items">Items</a>
+	<a routerLink="/dashboard">Dashboard</a>
 </nav>
 <router-outlet></router-outlet>
+
+
+
+<mat-toolbar class="example-header">Header</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+	<mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="false" [fixedTopGap]="0"
+		[fixedBottomGap]="0">
+
+		<mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Custom Toolbar</span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>Second Line</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>Third Line</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<p>content side nav</p>
+	</mat-sidenav-content>
+</mat-sidenav-container>
