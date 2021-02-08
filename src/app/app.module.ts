@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialFullModule } from "./material/material-full.module";
 import { ItemDialogComponent } from "./item-search//item-dialog/item-dialog.component";
 import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.component";
+import { SourcefilterComponent } from './item-search/filter-chips/sourcefilter/sourcefilter.component';
+import { DatefilterComponent } from './item-search/filter-chips/datefilter/datefilter.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.co
     ItemDetailComponent,
     DashboardComponent,
     ItemDialogComponent,
-    FilterChipsComponent
+    FilterChipsComponent,
+    SourcefilterComponent,
+    DatefilterComponent
   ],
   entryComponents: [ItemDialogComponent],
   bootstrap: [AppComponent],

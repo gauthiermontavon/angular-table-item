@@ -1,23 +1,28 @@
-<mat-form-field class="example-chip-list">
-	<mat-label>Favorite Fruits</mat-label>
-	<mat-chip-list #chipList aria-label="Fruit selection">
-		<mat-chip *ngFor="let one of selection" [selectable]="selectable" [removable]="removable"
-			(removed)="remove(one)">
-			{{one}}
-			<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-		</mat-chip>
-		<input
-      placeholder="New fruit..."
+<mat-form-field class="chip-list">
+  <mat-label>{{label ? label : 'no label' }}</mat-label>
+  <mat-chip-list #chipList aria-label="label">
+    <mat-chip
+      *ngFor="let one of selection"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(one)"
+    >
+      {{one}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="{{placeholder ? placeholder : 'no placeholder'}}"
       #objInput
       [formControl]="filterCtrl"
       [matAutocomplete]="auto"
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)">
+      (matChipInputTokenEnd)="add($event)"
+    />
   </mat-chip-list>
-		<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-			<mat-option *ngFor="let one of filteredObjs | async" [value]="one">
-				{{one}}
-			</mat-option>
-		</mat-autocomplete>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let one of filteredObjs | async" [value]="one">
+      {{one}}
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>
