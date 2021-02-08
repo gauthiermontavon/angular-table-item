@@ -31,7 +31,7 @@ import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 })
 export class ItemSearchComponent implements AfterViewInit, OnInit {
   item: Item;
-  displayedColumns: string[] = ["id", "title", "path", "author"];
+  displayedColumns: string[] = ["id", "title", "path", "author", "date"];
   defaultPageSize: number = 5;
 
   dataSource: ItemDatasource;
@@ -75,7 +75,6 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "250px";
     dialogConfig.data = { id: 1, title: "test" };
-   
 
     const dialogRef = this.dialog.open(ItemDialogComponent, dialogConfig);
 
