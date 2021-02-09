@@ -31,7 +31,14 @@ import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 })
 export class ItemSearchComponent implements AfterViewInit, OnInit {
   item: Item;
-  displayedColumns: string[] = ["id", "title", "path", "author", "date"];
+  displayedColumns: string[] = [
+    "id",
+    "title",
+    "path",
+    "author",
+    "date",
+    "actions"
+  ];
   defaultPageSize: number = 5;
 
   dataSource: ItemDatasource;

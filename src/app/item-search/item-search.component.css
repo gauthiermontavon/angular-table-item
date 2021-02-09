@@ -4,5 +4,8 @@ table {
 
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+}
+
+mat-card {
+  margin: 10px;
 }
