@@ -1,0 +1,36 @@
+<mat-card>
+
+	<form class="example-container" [formGroup]="options">
+		<mat-form-field>
+			<input matInput placeholder="Search" #input />
+    </mat-form-field>
+			<app-filter-chips></app-filter-chips>
+			<app-sourcefilter></app-sourcefilter>
+			<app-datefilter></app-datefilter>
+			<app-tag-panel></app-tag-panel>
+
+			<mat-grid-list cols="3" rowHeight="100px" gutterSize="5px">
+				<mat-grid-tile [colspan]="2" [rowspan]="1">
+
+				</mat-grid-tile>
+				<mat-grid-tile [colspan]="1" [rowspan]="1">
+					<mat-form-field>
+						<input matInput placeholder="Search" #input />
+          </mat-form-field>
+				</mat-grid-tile>
+				<mat-grid-tile [colspan]="1" [rowspan]="1">
+					<app-filter-chips></app-filter-chips>
+				</mat-grid-tile>
+				<mat-grid-tile [colspan]="1" [rowspan]="1">
+					<app-sourcefilter></app-sourcefilter>
+				</mat-grid-tile>
+				<mat-grid-tile [colspan]="1" [rowspan]="1">
+					<app-datefilter></app-datefilter>
+				</mat-grid-tile>
+			</mat-grid-list>
+
+
+	</form>
+
+
+</mat-card>

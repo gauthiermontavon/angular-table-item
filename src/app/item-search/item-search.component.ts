@@ -8,6 +8,7 @@ import {
 import { Item } from "../interfaces/item";
 import { ItemService } from "../services/item.service";
 import { interval, Observable, fromEvent } from "rxjs";
+
 import {
   debounceTime,
   distinctUntilChanged,
@@ -20,8 +21,8 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
+import { FilterResultsComponent } from "./filter-results/filter-results.component";
 //FIXME: deja importé dans appmodule, donc...
-
 import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 
 @Component({
@@ -45,7 +46,10 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild("input") input: ElementRef;
+
+  @ViewChild(FilterResultsComponent)
+  private filterComponent: FilterResultsComponent;
+
   constructor(private itemService: ItemService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -55,7 +59,7 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     // server-side search
-    fromEvent(this.input.nativeElement, "keyup")
+    fromEvent(this.filterComponent.input.nativeElement, "keyup")
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
@@ -71,7 +75,7 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
 
   loadItemsPage() {
     this.dataSource.loadItems(
-      this.input.nativeElement.value,
+      this.filterComponent.input.nativeElement.value,
       "asc",
       this.paginator.pageIndex,
       this.paginator.pageSize
