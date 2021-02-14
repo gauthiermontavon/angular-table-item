@@ -1,4 +1,4 @@
 .chip-list {
-  border: 1px solid red;
-  margin: 0px;
+  width: 100%;
+  border: 1px solid blue;
 }
