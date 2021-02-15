@@ -1,12 +1,12 @@
 mat-grid-tile {
-  border: 1px solid green;
+  //border: 1px solid green;
   padding: 0px;
 }
 
 .search-panel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid red;
+  //border: 1px solid red;
 }
 
 .search-basic {
@@ -15,7 +15,7 @@ mat-grid-tile {
 }
 
 .filters-zone {
-  border: 1px solid green;
+  //border: 1px solid green;
   grid-column: 1/5;
   grid-row: 2;
   display: grid;

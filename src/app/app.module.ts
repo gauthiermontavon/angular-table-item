@@ -21,6 +21,7 @@ import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.co
 import { SourcefilterComponent } from "./item-search/filter-chips/sourcefilter/sourcefilter.component";
 import { DatefilterComponent } from "./item-search/filter-chips/datefilter/datefilter.component";
 import { FilterResultsComponent } from "./item-search/filter-results/filter-results.component";
+import { TagfilterComponent } from './item-search/filter-chips/tagfilter/tagfilter.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { FilterResultsComponent } from "./item-search/filter-results/filter-resu
     FilterChipsComponent,
     SourcefilterComponent,
     DatefilterComponent,
-    FilterResultsComponent
+    FilterResultsComponent,
+    TagfilterComponent
   ],
   entryComponents: [ItemDialogComponent],
   bootstrap: [AppComponent],

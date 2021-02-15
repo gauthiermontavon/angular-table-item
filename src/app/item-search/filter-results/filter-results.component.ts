@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
   styleUrls: ["./filter-results.component.css"]
 })
 export class FilterResultsComponent implements OnInit {
+  showFilters: boolean;
   options: FormGroup;
   colorControl = new FormControl("primary");
   fontSizeControl = new FormControl(16);
@@ -19,5 +20,19 @@ export class FilterResultsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.showFilters = false;
+  }
+
+  toggleFilters() {
+    console.log("toggle filter");
+    if(!this.showFilters){
+      this.showFilters = true;
+    }
+    else{
+      this.showFilters = false;
+    }
+
+    console.log("toggle filter" + this.showFilters);
+  }
 }
