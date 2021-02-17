@@ -1,10 +1,10 @@
 <mat-card>
 
 
-	<div class="search-panel">
+	<div class="search-panel" [formGroup]="searchForm">
 		<div class="search-basic">
 			<mat-form-field appearance="outline">
-				<input matInput placeholder="Search" #input />
+				<input matInput placeholder="Search" formControlName="global-search-term" />
     </mat-form-field>
 				<button (click)="toggleFilters()">
         	<mat-icon>filter_alt

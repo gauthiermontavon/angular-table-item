@@ -22,7 +22,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 import { FilterResultsComponent } from "./filter-results/filter-results.component";
-//FIXME: deja importé dans appmodule, donc...
+//FIXME: deja importé dans appmodule, donc...?
 import { ItemDialogComponent } from "./item-dialog/item-dialog.component";
 
 @Component({
@@ -58,9 +58,9 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    // server-side search
-    fromEvent(this.filterComponent.input.nativeElement, "keyup")
+    this.filterComponent.searchForm.valueChanges
       .pipe(
+        tap(val => console.log("value serach CHANGED !!!" + val)),
         debounceTime(300),
         distinctUntilChanged(),
         tap(() => {
@@ -70,16 +70,28 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
       )
       .subscribe();
 
+    // server-side search
+    /* fromEvent(this.filterComponent.input.nativeElement, "keyup")
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        tap(() => {
+          this.paginator.pageIndex = 0;
+          this.loadItemsPage();
+        })
+      )
+      .subscribe();*/
+
     this.paginator.page.pipe(tap(() => this.loadItemsPage())).subscribe();
   }
 
   loadItemsPage() {
-    this.dataSource.loadItems(
+    /*this.dataSource.loadItems(
       this.filterComponent.input.nativeElement.value,
       "asc",
       this.paginator.pageIndex,
       this.paginator.pageSize
-    );
+    );*/
   }
 
   openDialog(): void {

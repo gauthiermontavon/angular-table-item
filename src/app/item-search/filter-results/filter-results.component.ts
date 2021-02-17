@@ -7,16 +7,20 @@ import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 })
 export class FilterResultsComponent implements OnInit {
   showFilters: boolean;
-  options: FormGroup;
+  searchForm : FormGroup;
+
   colorControl = new FormControl("primary");
   fontSizeControl = new FormControl(16);
 
-  @ViewChild("input") input: ElementRef;
+  //@ViewChild("input") input: ElementRef;
 
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      color: this.colorControl,
-      fontSize: this.fontSizeControl
+  constructor() {
+    this.searchForm = new FormGroup({
+        global_search_term: new FormControl(),
+        source_filter : new FormControl(),
+        date_filter : new FormControl(),
+        tags_filter: new FormControl()
+
     });
   }
 
