@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FilterChipsComponent } from "../filter-chips.component";
+import { ItemService } from "../../services/item.service";
 
 @Component({
   selector: "app-tagfilter",
@@ -7,13 +8,17 @@ import { FilterChipsComponent } from "../filter-chips.component";
   styleUrls: ["../filter-chips.component.css"]
 })
 export class TagfilterComponent extends FilterChipsComponent {
-  constructor() {
+  constructor(private itemService: ItemService) {
     super();
   }
 
   ngOnInit() {
     this.label = "Tags";
     this.placeholder = "nouveau tag";
+
+    this.itemService.getTagsUsed().subscribe((tags: String[]) => {
+      console.log("nb elements tag" + tags.length);
+    });
 
     this.selection = ["travail"];
     this.all = [

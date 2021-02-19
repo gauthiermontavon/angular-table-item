@@ -42,6 +42,7 @@ export class ItemDatasource implements DataSource<Item> {
         console.log("COUCOU Jai bien recu les résultats");
         console.log("total:" + items.meta.totalCount);
         this.totalCount = items.meta.totalCount;
+        //FIXME: clarifier...
         this.itemsSubject.next(items.payload);
       });
   }

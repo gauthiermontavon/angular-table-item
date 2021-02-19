@@ -33,11 +33,7 @@ export class ItemService {
         .set("pageNumber", pageNumber.toString())
         .set("pageSize", pageSize.toString())
     });
-    /*
-      .pipe(
-        tap(res => console.log(res)),
-        map(res => res["payload"])
-      );*/
+   
   }
 
   addItem(item: Item) {
@@ -58,4 +54,11 @@ export class ItemService {
       .get<Item[]>(this.server_url + "/item/list")
       .subscribe(response => this.itemsListSubject.next(response));
   }*/
+
+  getTagsUsed():Observable<String[]>{
+    return this.http.get<String[]>(this.server_url+"/tags/used",{
+
+    });
+
+  }
 }
