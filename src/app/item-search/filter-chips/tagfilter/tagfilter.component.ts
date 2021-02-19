@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FilterChipsComponent } from "../filter-chips.component";
-import { ItemService } from "../../services/item.service";
+import { ItemService } from "../../../services/item.service";
 
 @Component({
   selector: "app-tagfilter",
@@ -15,12 +15,6 @@ export class TagfilterComponent extends FilterChipsComponent {
   ngOnInit() {
     this.label = "Tags";
     this.placeholder = "nouveau tag";
-
-    this.itemService.getTagsUsed().subscribe((tags: String[]) => {
-      console.log("nb elements tag" + tags.length);
-    });
-
-    this.selection = ["travail"];
     this.all = [
       "travail",
       "banque",
@@ -29,5 +23,14 @@ export class TagfilterComponent extends FilterChipsComponent {
       "contrat",
       "voiture"
     ];
+
+    /*this.itemService.getTagsUsed().subscribe(tags => {
+      for (let tag of tags.usedTags) {
+        //this.all.push(tag);
+      }
+      console.log("this.all content in subscribe:" + this.all);
+    });
+    console.log("this.all content:" + this.all);
+    this.selection = ["travail"];*/
   }
 }

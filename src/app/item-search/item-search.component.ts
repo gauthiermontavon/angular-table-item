@@ -81,17 +81,17 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
         })
       )
       .subscribe();*/
-
+    //FIXME :NE sert à rien ??
     this.paginator.page.pipe(tap(() => this.loadItemsPage())).subscribe();
   }
 
   loadItemsPage() {
-    /*this.dataSource.loadItems(
-      this.filterComponent.input.nativeElement.value,
+    this.dataSource.loadItems(
+      this.filterComponent.searchForm.value,
       "asc",
       this.paginator.pageIndex,
       this.paginator.pageSize
-    );*/
+    );
   }
 
   openDialog(): void {

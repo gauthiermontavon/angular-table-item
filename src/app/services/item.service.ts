@@ -21,19 +21,32 @@ export class ItemService {
   }
 
   findItems(
-    filter = "",
+    filter = null,
     sortOrder = "asc",
     pageNumber = 0,
     pageSize = 3
   ): Observable<ServiceResultItems> {
+    let parameters = new HttpParams();
+    if (filter) {
+      // we were given filtering criteria, build the query string
+      Object.keys(filter)
+        .sort()
+        .forEach(key => {
+          const value = filter[key];
+          if (value !== null) {
+            parameters = parameters.set(key, value.toString());
+          }
+        });
+    }
+
+    parameters = parameters
+      .set("sortOrder", sortOrder)
+      .set("pageNumber", pageNumber.toString())
+      .set("pageSize", pageSize.toString());
+
     return this.http.get<ServiceResultItems>(this.server_url + "/item/list", {
-      params: new HttpParams()
-        .set("filter", filter)
-        .set("sortOrder", sortOrder)
-        .set("pageNumber", pageNumber.toString())
-        .set("pageSize", pageSize.toString())
+      params: parameters
     });
-   
   }
 
   addItem(item: Item) {
@@ -55,10 +68,7 @@ export class ItemService {
       .subscribe(response => this.itemsListSubject.next(response));
   }*/
 
-  getTagsUsed():Observable<String[]>{
-    return this.http.get<String[]>(this.server_url+"/tags/used",{
-
-    });
-
+  getTagsUsed(): Observable<any> {
+    return this.http.get<String[]>(this.server_url + "/tags/used", {});
   }
 }

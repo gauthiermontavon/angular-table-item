@@ -24,8 +24,10 @@ export class FilterChipsComponent {
 
   label: string;
   placeholder: string;
+
   selection: string[] = ["Lemon"];
   all: string[] = ["Apple", "Lemon", "Lime", "Orange", "Strawberry"];
+  
 
   @ViewChild("objInput") objInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;

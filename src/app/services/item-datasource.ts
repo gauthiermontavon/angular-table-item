@@ -25,7 +25,7 @@ export class ItemDatasource implements DataSource<Item> {
   }
 
   loadItems(
-    filter: string,
+    filter: Object,
     sortDirection: string,
     pageIndex: number,
     pageSize: number
