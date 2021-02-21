@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit
+} from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { FilterChipsComponent } from "../filter-chips/filter-chips.component";
 @Component({
@@ -6,7 +12,7 @@ import { FilterChipsComponent } from "../filter-chips/filter-chips.component";
   templateUrl: "./filter-results.component.html",
   styleUrls: ["./filter-results.component.css"]
 })
-export class FilterResultsComponent implements OnInit,AfterViewInit {
+export class FilterResultsComponent implements OnInit, AfterViewInit {
   showFilters: boolean;
   searchForm: FormGroup;
   @ViewChild(FilterChipsComponent)
@@ -19,13 +25,15 @@ export class FilterResultsComponent implements OnInit,AfterViewInit {
 
   ngOnInit() {
     this.showFilters = false;
+    
   }
-  ngAfterViewInit(){
-   this.searchForm.addControl('childForm', this.filterChipsComponent.filterForm);
+  ngAfterViewInit() {
+    this.searchForm.addControl(
+      "childForm",
+      this.filterChipsComponent.filterForm
+    );
     this.filterChipsComponent.filterForm.setParent(this.searchForm);
-}
-
- 
+  }
 
   toggleFilters() {
     console.log("toggle filter");
