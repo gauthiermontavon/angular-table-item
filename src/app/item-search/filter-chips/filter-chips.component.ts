@@ -1,25 +1,39 @@
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import { Component, ElementRef, ViewChild } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+  OnInit
+} from "@angular/core";
+
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete
 } from "@angular/material/autocomplete";
 import { MatChipInputEvent } from "@angular/material/chips";
-import { Observable } from "rxjs";
-import { map, startWith } from "rxjs/operators";
+import { Observable, fromEvent } from "rxjs";
+import {
+  debounceTime,
+  distinctUntilChanged,
+  startWith,
+  tap,
+  delay,
+  map
+} from "rxjs/operators";
 
 @Component({
   selector: "app-filter-chips",
   templateUrl: "./filter-chips.component.html",
   styleUrls: ["./filter-chips.component.css"]
 })
-export class FilterChipsComponent {
+export class FilterChipsComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  filterCtrl = new FormControl();
+ 
   filteredObjs: Observable<string[]>;
 
   label: string;
@@ -27,15 +41,36 @@ export class FilterChipsComponent {
 
   selection: string[] = ["Lemon"];
   all: string[] = ["Apple", "Lemon", "Lime", "Orange", "Strawberry"];
-  
 
+  form_control_name: string;
+
+  filterForm: FormGroup;
   @ViewChild("objInput") objInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
   constructor() {
-    this.filteredObjs = this.filterCtrl.valueChanges.pipe(
+    this.filterForm = new FormGroup({
+      tag_filter: new FormControl()
+    });
+
+    this.all.slice();
+    this.filteredObjs = this.filterForm.get("tag_filter").valueChanges.pipe(
       startWith(null),
       map((obj: string | null) => (obj ? this._filter(obj) : this.all.slice()))
     );
+  }
+
+  ngOnInit() {
+    this.selection = [];
+    this.label = "Tags";
+    this.placeholder = "nouveau tag";
+    this.all = [
+      "travail",
+      "banque",
+      "assurance",
+      "maison",
+      "contrat",
+      "voiture"
+    ];
   }
 
   add(event: MatChipInputEvent): void {
@@ -52,7 +87,8 @@ export class FilterChipsComponent {
       input.value = "";
     }
 
-    this.filterCtrl.setValue(null);
+  
+    this.filterForm.get("tag_filter").setValue(null);
   }
 
   remove(obj: string): void {
@@ -66,7 +102,8 @@ export class FilterChipsComponent {
   selected(event: MatAutocompleteSelectedEvent): void {
     this.selection.push(event.option.viewValue);
     this.objInput.nativeElement.value = "";
-    this.filterCtrl.setValue(null);
+ 
+    this.filterForm.get("tag_filter").setValue(null);
   }
 
   private _filter(value: string): string[] {

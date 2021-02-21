@@ -1,39 +1,37 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FilterChipsComponent } from "../filter-chips/filter-chips.component";
 @Component({
   selector: "app-filter-results",
   templateUrl: "./filter-results.component.html",
   styleUrls: ["./filter-results.component.css"]
 })
-export class FilterResultsComponent implements OnInit {
+export class FilterResultsComponent implements OnInit,AfterViewInit {
   showFilters: boolean;
-  searchForm : FormGroup;
-
-  colorControl = new FormControl("primary");
-  fontSizeControl = new FormControl(16);
-
-  //@ViewChild("input") input: ElementRef;
-
+  searchForm: FormGroup;
+  @ViewChild(FilterChipsComponent)
+  private filterChipsComponent: FilterChipsComponent;
   constructor() {
     this.searchForm = new FormGroup({
-        global_search_term: new FormControl(),
-        source_filter : new FormControl(),
-        date_filter : new FormControl(),
-        tags_filter: new FormControl()
-
+      global_search_term: new FormControl()
     });
   }
 
   ngOnInit() {
     this.showFilters = false;
   }
+  ngAfterViewInit(){
+   this.searchForm.addControl('childForm', this.filterChipsComponent.filterForm);
+    this.filterChipsComponent.filterForm.setParent(this.searchForm);
+}
+
+ 
 
   toggleFilters() {
     console.log("toggle filter");
-    if(!this.showFilters){
+    if (!this.showFilters) {
       this.showFilters = true;
-    }
-    else{
+    } else {
       this.showFilters = false;
     }
 

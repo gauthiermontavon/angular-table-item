@@ -18,10 +18,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialFullModule } from "./material/material-full.module";
 import { ItemDialogComponent } from "./item-search//item-dialog/item-dialog.component";
 import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.component";
-import { SourcefilterComponent } from "./item-search/filter-chips/sourcefilter/sourcefilter.component";
-import { DatefilterComponent } from "./item-search/filter-chips/datefilter/datefilter.component";
+
 import { FilterResultsComponent } from "./item-search/filter-results/filter-results.component";
-import { TagfilterComponent } from './item-search/filter-chips/tagfilter/tagfilter.component';
+
 
 @NgModule({
   imports: [
@@ -41,10 +40,8 @@ import { TagfilterComponent } from './item-search/filter-chips/tagfilter/tagfilt
     DashboardComponent,
     ItemDialogComponent,
     FilterChipsComponent,
-    SourcefilterComponent,
-    DatefilterComponent,
-    FilterResultsComponent,
-    TagfilterComponent
+    FilterResultsComponent
+
   ],
   entryComponents: [ItemDialogComponent],
   bootstrap: [AppComponent],
