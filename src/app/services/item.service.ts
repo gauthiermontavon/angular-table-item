@@ -27,23 +27,46 @@ export class ItemService {
     pageSize = 3
   ): Observable<ServiceResultItems> {
     let parameters = new HttpParams();
+    console.log("SERVICE CALL STEP 1:" + filter);
     if (filter) {
+      console.log("---------------------");
       // we were given filtering criteria, build the query string
       Object.keys(filter)
         .sort()
         .forEach(key => {
+          console.log("***");
           const value = filter[key];
-          if (value !== null) {
+          console.log(key + ":" + value);
+          console.log("JSON:" + JSON.stringify(value));
+          console.log("typepof value" + typeof value);
+
+          if (typeof value == "string") {
             parameters = parameters.set(key, value.toString());
+          } else if (typeof value == "object" && value !== null) {
+            console.log("OH IT A COMPLETE OBJECT, need to explore it");
+            Object.keys(value)
+              .sort()
+              .forEach(key => {
+                const value2 = filter[key];
+                console.log("******");
+                console.log(key + ":" + value);
+                if (typeof value2 == "string") {
+                  parameters = parameters.set(key, value2.toString());
+                } else if (typeof value == "object" && value !== null) {
+                  console.log("to deep for me...max 2 levels");
+                  console.log("please implement recursive buildParams method");
+                }
+              });
           }
         });
+      console.log("---------------------");
     }
 
     parameters = parameters
       .set("sortOrder", sortOrder)
       .set("pageNumber", pageNumber.toString())
       .set("pageSize", pageSize.toString());
-
+    console.log("SERVICE call with parameters:" + console.log(parameters));
     return this.http.get<ServiceResultItems>(this.server_url + "/item/list", {
       params: parameters
     });
@@ -70,5 +93,29 @@ export class ItemService {
 
   getTagsUsed(): Observable<any> {
     return this.http.get<String[]>(this.server_url + "/tags/used", {});
+  }
+  //TODO: recursive fonction to collect form into form into form....
+  private buildParams(filter: Object): HttpParams {
+    /*console.log("---------------------");
+      // we were given filtering criteria, build the query string
+      Object.keys(filter)
+        .sort()
+        .forEach(key => {
+          const value = filter[key];
+          console.log(key + ":" + value);
+          console.log("typepof value" + typeof value);
+
+          if (typeof value == "string") {
+           
+             parameters = parameters.set(key, value.toString());
+          }
+          else if (value !== null) {
+            console.log("OH IT A COMPLETE OBJECT, need to explore it");
+          }
+        });
+      console.log("---------------------");
+*/
+
+    return new HttpParams();
   }
 }

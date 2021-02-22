@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  ViewChild,
+  ViewChildren,
+  QueryList,
   ElementRef,
   AfterViewInit
 } from "@angular/core";
@@ -15,8 +16,11 @@ import { FilterChipsComponent } from "../filter-chips/filter-chips.component";
 export class FilterResultsComponent implements OnInit, AfterViewInit {
   showFilters: boolean;
   searchForm: FormGroup;
-  @ViewChild(FilterChipsComponent)
-  private filterChipsComponent: FilterChipsComponent;
+  //ViewChildren instead of ViewChild (conditionnal display ngIf)
+  //https://stackoverflow.com/questions/48321568/viewchild-returns-undefined
+  @ViewChildren(FilterChipsComponent)
+  private filterChComponent: QueryList<FilterChipsComponent>;
+
   constructor() {
     this.searchForm = new FormGroup({
       global_search_term: new FormControl()
@@ -25,14 +29,32 @@ export class FilterResultsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.showFilters = false;
-    
   }
   ngAfterViewInit() {
-    this.searchForm.addControl(
-      "childForm",
-      this.filterChipsComponent.filterForm
+   
+    this.filterChComponent.changes.subscribe(
+      (comps: QueryList<FilterChipsComponent>) => {
+        // Now you can access to the child component
+        console.log("ngAfterViewInit - filterChComponent is now available");
+        console.log("this.filterch check:" + this.filterChComponent);
+        console.log("typeof:" + typeof this.filterChComponent);
+        if (this.filterChComponent) {
+          comps.forEach(element => {
+            console.log("typeof:" + typeof element);
+            console.log("element.filterForm"+element.filterForm);
+
+            this.searchForm.addControl(
+              "childForm",
+              element.filterForm
+            );
+            element.filterForm.setParent(this.searchForm);
+        
+          });
+
+         }
+       
+      }
     );
-    this.filterChipsComponent.filterForm.setParent(this.searchForm);
   }
 
   toggleFilters() {
