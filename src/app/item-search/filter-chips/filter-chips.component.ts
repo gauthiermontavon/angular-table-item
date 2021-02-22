@@ -33,7 +33,7 @@ export class FilterChipsComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
- 
+  tagCtrl = new FormControl();
   filteredObjs: Observable<string[]>;
 
   label: string;
@@ -42,9 +42,8 @@ export class FilterChipsComponent implements OnInit {
   selection: string[] = ["Lemon"];
   all: string[] = ["Apple", "Lemon", "Lime", "Orange", "Strawberry"];
 
-  form_control_name: string;
-
   filterForm: FormGroup;
+
   @ViewChild("objInput") objInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
   constructor() {
@@ -53,7 +52,8 @@ export class FilterChipsComponent implements OnInit {
     });
 
     this.all.slice();
-    this.filteredObjs = this.filterForm.get("tag_filter").valueChanges.pipe(
+
+    this.filteredObjs = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((obj: string | null) => (obj ? this._filter(obj) : this.all.slice()))
     );
@@ -74,12 +74,15 @@ export class FilterChipsComponent implements OnInit {
   }
 
   add(event: MatChipInputEvent): void {
+    console.log("ADDD");
     const input = event.input;
     const value = event.value;
 
     // Add our fruit
     if ((value || "").trim()) {
       this.selection.push(value.trim());
+      //can't link chips list to form control, so lets do it manually
+      this.filterForm.controls.tag_filter.setValue(this.selection.toString());
     }
 
     // Reset the input value
@@ -87,8 +90,7 @@ export class FilterChipsComponent implements OnInit {
       input.value = "";
     }
 
-  
-    this.filterForm.get("tag_filter").setValue(null);
+    this.tagCtrl.setValue(null);
   }
 
   remove(obj: string): void {
@@ -100,10 +102,12 @@ export class FilterChipsComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
+    console.log("SELECTEDDD");
     this.selection.push(event.option.viewValue);
     this.objInput.nativeElement.value = "";
- 
-    this.filterForm.get("tag_filter").setValue(null);
+    this.tagCtrl.setValue(null);
+    //can't link chips list to form control, so lets do it manually
+    this.filterForm.controls.tag_filter.setValue(this.selection.toString());
   }
 
   private _filter(value: string): string[] {

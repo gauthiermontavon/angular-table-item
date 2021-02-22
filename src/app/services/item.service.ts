@@ -46,13 +46,15 @@ export class ItemService {
             console.log("OH IT A COMPLETE OBJECT, need to explore it");
             Object.keys(value)
               .sort()
-              .forEach(key => {
-                const value2 = filter[key];
+              .forEach(key2 => {
+                const value2 = value[key2];
                 console.log("******");
-                console.log(key + ":" + value);
+                console.log(key2 + ":" + value2);
+                console.log("JSON:" + JSON.stringify(value));
+                console.log("typepof value" + typeof value2);
                 if (typeof value2 == "string") {
-                  parameters = parameters.set(key, value2.toString());
-                } else if (typeof value == "object" && value !== null) {
+                  parameters = parameters.set(key2, value2.toString());
+                } else if (typeof value2 == "object" && value2 !== null) {
                   console.log("to deep for me...max 2 levels");
                   console.log("please implement recursive buildParams method");
                 }
