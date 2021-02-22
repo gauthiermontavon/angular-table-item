@@ -1,41 +1,43 @@
 <mat-toolbar color="primary" class="example-header">Project Name</mat-toolbar>
 
 <mat-sidenav-container class="example-container">
-	<mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="false" [fixedTopGap]="0"
-		[fixedBottomGap]="0">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="example-sidenav"
+    [fixedInViewport]="false"
+    [fixedTopGap]="0"
+    [fixedBottomGap]="0"
+  >
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <a routerLink="/items">
+          <mat-icon>list</mat-icon>
+        </a>
+      </mat-toolbar-row>
 
-		<mat-toolbar color="primary">
-			<mat-toolbar-row>
+      <mat-toolbar-row>
+        <a routerLink="/dashboard">
+          <mat-icon>build</mat-icon>
+        </a>
+      </mat-toolbar-row>
 
-				<a routerLink="/items">
-					<mat-icon>list</mat-icon>
-				</a>
+      <mat-toolbar-row>
+        <mat-icon>supervisor_account</mat-icon>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <mat-icon>settings</mat-icon>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <a routerLink="/help">
+          <mat-icon>help</mat-icon>
+        </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav>
 
-			</mat-toolbar-row>
-
-			<mat-toolbar-row>
-				<mat-icon>build</mat-icon>
-			</mat-toolbar-row>
-
-			<mat-toolbar-row>
-				<mat-icon>supervisor_account</mat-icon>
-			</mat-toolbar-row>
-			<mat-toolbar-row>
-				<a routerLink="/dashboard">
-					<mat-icon>settings</mat-icon>
-				</a>
-
-			</mat-toolbar-row>
-			<mat-toolbar-row>
-				<mat-icon>help</mat-icon>
-			</mat-toolbar-row>
-		</mat-toolbar>
-
-	</mat-sidenav>
-
-	<mat-sidenav-content>
-
-
-		<router-outlet></router-outlet>
-	</mat-sidenav-content>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

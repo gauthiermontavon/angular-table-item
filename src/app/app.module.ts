@@ -20,6 +20,7 @@ import { ItemDialogComponent } from "./item-search//item-dialog/item-dialog.comp
 import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.component";
 
 import { FilterResultsComponent } from "./item-search/filter-results/filter-results.component";
+import { HelpComponent } from './help/help.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FilterResultsComponent } from "./item-search/filter-results/filter-resu
     DashboardComponent,
     ItemDialogComponent,
     FilterChipsComponent,
-    FilterResultsComponent
+    FilterResultsComponent,
+    HelpComponent
 
   ],
   entryComponents: [ItemDialogComponent],
