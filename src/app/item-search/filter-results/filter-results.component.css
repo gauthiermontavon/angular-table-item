@@ -8,7 +8,10 @@ mat-grid-tile {
   grid-template-columns: repeat(4, 1fr);
   //border: 1px solid red;
 }
-
+#preset-filters {
+  grid-column: 1/2;
+  grid-row: 1;
+}
 .search-basic {
   grid-column: 4;
   grid-row: 1;

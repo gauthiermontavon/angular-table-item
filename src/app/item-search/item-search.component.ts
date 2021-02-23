@@ -38,6 +38,7 @@ export class ItemSearchComponent implements AfterViewInit, OnInit {
     "path",
     "author",
     "date",
+    "tags",
     "actions"
   ];
   defaultPageSize: number = 5;

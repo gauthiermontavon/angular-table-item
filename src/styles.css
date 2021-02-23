@@ -2,9 +2,19 @@
 => doesnt work in stackblitz
 */
 
-.example-sidenav  a
- {
+.example-sidenav a {
   text-decoration: none !important;
-  color:inherit;
+  color: inherit;
+}
+
+.hono-box {
+  border: 1px solid green;
+  padding: 0px 10px 5px 10px;
+}
+
+.hono-box .box-header {
+  margin: 0px 0px 15px 0px;
 
 }
+
+

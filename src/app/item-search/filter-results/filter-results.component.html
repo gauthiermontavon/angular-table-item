@@ -1,21 +1,31 @@
 <mat-card>
-  <div class="search-panel" [formGroup]="searchForm">
-    <div class="search-basic">
-      <mat-form-field appearance="outline">
-        <input
+	<div class="search-panel" [formGroup]="searchForm">
+
+		<div class="hono-box" id="preset-filters">
+			<div class="box-header">Preset filters</div>
+			<button mat-stroked-button (click)="toggleFilters()">Untagged
+        <!--<mat-icon>filter_alt </mat-icon>-->
+      </button>
+			<button mat-stroked-button (click)="toggleFilters()">New
+        <!--<mat-icon>filter_alt </mat-icon>-->
+      </button>
+		</div>
+		<div class="search-basic">
+			<mat-form-field appearance="outline">
+				<input
           matInput
           placeholder="Search"
           formControlName="global_search_term"
         />
       </mat-form-field>
-      <button (click)="toggleFilters()">
+				<button mat-stroked-button (click)="toggleFilters()">
         <mat-icon>filter_alt </mat-icon>
       </button>
-    </div>
-    <ng-container *ngIf="showFilters">
-      <div class="filters-zone">
-        <app-filter-chips></app-filter-chips>
-      </div>
-    </ng-container>
-  </div>
+		</div>
+		<ng-container *ngIf="showFilters">
+			<div class="filters-zone">
+				<app-filter-chips></app-filter-chips>
+			</div>
+		</ng-container>
+	</div>
 </mat-card>
