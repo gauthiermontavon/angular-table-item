@@ -8,29 +8,49 @@ import { ItemDatasource } from "../../services/item-datasource";
   styleUrls: ["./item-gallery-view.component.css"]
 })
 export class ItemGalleryViewComponent implements OnInit {
- 
- 
- 
- @Input("data")
+  @Input("data")
   dataSource: ItemDatasource;
   itemsList: Item[];
+  galleryTypeFile: string;
+  selectedItemIndex: number;
 
   constructor() {}
 
   ngOnInit() {
+    this.selectedItemIndex = 0;
     console.log("INIT gallery:" + this.dataSource);
-
+    this.galleryTypeFile = "";
     this.dataSource.itemsSubject.subscribe(val => {
       this.itemsList = val;
       val.forEach(item => {
+        let extension = item.path.substring(
+          item.path.lastIndexOf(".") + 1,
+          item.path.length
+        );
+        if (
+          this.galleryTypeFile.length > 0 &&
+          extension != this.galleryTypeFile
+        ) {
+          alert("WARN HYBRIDE GALLERY");
+        }
+        //if (item.path.substring(item.path.lastIndexOf('.'),item.path.length)
         console.log("item.id" + item.id);
         console.log("item.title" + item.title);
+        console.log(
+          "gallery mode is : " +
+            item.path.substring(
+              item.path.lastIndexOf(".") + 1,
+              item.path.length
+            )
+        );
       });
       console.log("subscribe itemsSubject of datssoure:" + val);
     });
   }
 
-  selectItem(item: Item, event?: Event) {
+  selectItem(index: number, event?: Event) {
+    console.log("index selected" + index);
+    this.selectedItemIndex = index;
     //TODO: si la touch Shift n'est pas enfoncé
     document
       .getElementById("hono-gallery-items")
