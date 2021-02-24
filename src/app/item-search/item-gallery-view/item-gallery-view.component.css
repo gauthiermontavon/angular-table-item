@@ -1,4 +1,4 @@
-.hono-gallery-items {
+#hono-gallery-items {
   float: left;
   padding-top: 25px;
   width: 75%;
@@ -6,10 +6,12 @@
   min-height: 500px;
 }
 
-.hono-gallery-detail {
+#hono-gallery-detail {
   float: left;
+   padding-top: 25px;
   background: lightgray;
   width: 25%;
+  min-height: 500px;
 }
 
 /* Clear floats after the columns */
@@ -23,6 +25,10 @@ mat-grid-tile {
   cursor: pointer;
 }
 
+mat-grid-tile img{
+  border:1px solid green;
+
+}
 mat-grid-tile.selected {
   border: 3px solid darkblue;
 }

@@ -8,7 +8,10 @@ import { ItemDatasource } from "../../services/item-datasource";
   styleUrls: ["./item-gallery-view.component.css"]
 })
 export class ItemGalleryViewComponent implements OnInit {
-  @Input("data")
+ 
+ 
+ 
+ @Input("data")
   dataSource: ItemDatasource;
   itemsList: Item[];
 
@@ -27,10 +30,18 @@ export class ItemGalleryViewComponent implements OnInit {
     });
   }
 
-  selectItem(item: Item, event?: KEvent) {
-    /*const evtMsg = event ? ' Event target is ' + (event.target as HTMLElement).textContent : '';
-    alert('Saved.' + evtMsg);
-    if (event) { event.stopPropagation(); }*/
-    console.log("YEAH");
+  selectItem(item: Item, event?: Event) {
+    //TODO: si la touch Shift n'est pas enfoncé
+    document
+      .getElementById("hono-gallery-items")
+      .querySelectorAll("mat-grid-tile.selected")
+      .forEach(elm => {
+        elm.classList.remove("selected");
+      });
+    var htmlElem = event.target as HTMLElement;
+    htmlElem.closest("mat-grid-tile").classList.add("selected");
+    if (event) {
+      event.stopPropagation();
+    }
   }
 }
