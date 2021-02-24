@@ -16,6 +16,8 @@ export class ItemGalleryViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    this.dataSource.totalCount
   }
 
 }
