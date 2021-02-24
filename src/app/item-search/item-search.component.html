@@ -43,7 +43,7 @@
 
 						<mat-cell class="date-cell" *matCellDef="let item">{{item.date}}</mat-cell>
 					</ng-container>
-          	<ng-container matColumnDef="tags">
+					<ng-container matColumnDef="tags">
 						<mat-header-cell *matHeaderCellDef>tags</mat-header-cell>
 
 						<mat-cell class="tag-cell" *matCellDef="let item">{{item.tags}}</mat-cell>
@@ -81,7 +81,7 @@
 					<mat-icon class="example-tab-icon">grid_on</mat-icon>
 					Gallery
 				</ng-template>
-				Content 2
+				<app-item-gallery-view [data]="dataSource"></app-item-gallery-view>
 			</mat-tab>
 
 			<mat-tab>

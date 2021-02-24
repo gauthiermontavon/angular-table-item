@@ -21,6 +21,8 @@ import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.co
 
 import { FilterResultsComponent } from "./item-search/filter-results/filter-results.component";
 import { HelpComponent } from './help/help.component';
+import { ItemListViewComponent } from './item-search/item-list-view/item-list-view.component';
+import { ItemGalleryViewComponent } from './item-search/item-gallery-view/item-gallery-view.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { HelpComponent } from './help/help.component';
     ItemDialogComponent,
     FilterChipsComponent,
     FilterResultsComponent,
-    HelpComponent
+    HelpComponent,
+    ItemListViewComponent,
+    ItemGalleryViewComponent
 
   ],
   entryComponents: [ItemDialogComponent],
