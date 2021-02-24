@@ -20,4 +20,9 @@
 }
 mat-grid-tile {
   background: lightblue;
+  cursor: pointer;
+}
+
+mat-grid-tile.selected {
+  border: 3px solid darkblue;
 }

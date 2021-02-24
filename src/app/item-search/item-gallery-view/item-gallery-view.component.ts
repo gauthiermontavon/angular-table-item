@@ -26,4 +26,11 @@ export class ItemGalleryViewComponent implements OnInit {
       console.log("subscribe itemsSubject of datssoure:" + val);
     });
   }
+
+  selectItem(item: Item, event?: KEvent) {
+    /*const evtMsg = event ? ' Event target is ' + (event.target as HTMLElement).textContent : '';
+    alert('Saved.' + evtMsg);
+    if (event) { event.stopPropagation(); }*/
+    console.log("YEAH");
+  }
 }
