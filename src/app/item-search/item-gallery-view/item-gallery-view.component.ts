@@ -13,6 +13,8 @@ export class ItemGalleryViewComponent implements OnInit {
   itemsList: Item[];
   galleryTypeFile: string;
   selectedItemIndex: number;
+  pdfSource ="https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+ 
 
   constructor() {}
 
@@ -64,4 +66,16 @@ export class ItemGalleryViewComponent implements OnInit {
       event.stopPropagation();
     }
   }
+
+  getFileTypeForItem(index: number): string {
+    console.log("getFileTypeForItem:" + this.itemsList[index].path.substring(
+      this.itemsList[index].path.lastIndexOf("."),
+      this.itemsList[index].path.length
+    ));
+    return this.itemsList[index].path.substring(
+      this.itemsList[index].path.lastIndexOf(".")+1,
+      this.itemsList[index].path.length
+    );
+  }
+
 }

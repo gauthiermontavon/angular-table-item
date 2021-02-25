@@ -16,9 +16,11 @@ import { ItemService } from "./services/item.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 /*import { MaterialDatatableModule } from "./material/material-datatable/material-datatable.module";*/
 import { MaterialFullModule } from "./material/material-full.module";
+
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
+
 import { ItemDialogComponent } from "./item-search//item-dialog/item-dialog.component";
 import { FilterChipsComponent } from "./item-search/filter-chips/filter-chips.component";
-
 import { FilterResultsComponent } from "./item-search/filter-results/filter-results.component";
 import { HelpComponent } from './help/help.component';
 import { ItemListViewComponent } from './item-search/item-list-view/item-list-view.component';
@@ -33,7 +35,8 @@ import { ItemGalleryViewComponent } from './item-search/item-gallery-view/item-g
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialFullModule
+    MaterialFullModule,
+    PdfViewerModule
   ],
   declarations: [
     AppComponent,

@@ -81,7 +81,9 @@
 					<mat-icon class="example-tab-icon">grid_on</mat-icon>
 					Gallery
 				</ng-template>
-				<app-item-gallery-view [data]="dataSource"></app-item-gallery-view>
+        <ng-template matTabContent>
+				  <app-item-gallery-view [data]="dataSource"></app-item-gallery-view>
+        </ng-template>
 			</mat-tab>
 
 			<mat-tab>

@@ -6,11 +6,12 @@
         (click)="selectItem(i,$event)"
       >
         <img
-          src="https://cdn.jsdelivr.net/gh/gauthiermontavon/angular-table-item@master/resources/iconfinder_document_file_paper_page-17_2850859.png"
-          alt="pdf"
+          src="https://cdn.jsdelivr.net/gh/gauthiermontavon/angular-table-item@master/resources/iconfinder_Image-01_1976052.png"
           width="50px"
           height="50px;"
         />
+
+        
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -21,8 +22,15 @@
 				<mat-card-title>Shiba Inu</mat-card-title>
 				<mat-card-subtitle>Dog Breed</mat-card-subtitle>
 			</mat-card-header>-->
+      <ng-container [ngSwitch]="getFileTypeForItem(selectedItemIndex)">
+        <img *ngSwitchCase="'jpg'" src="{{itemsList[selectedItemIndex].path}}" alt="{{itemsList[selectedItemIndex].title}}" width="200px" height="200px;" />
+        <div *ngSwitchCase="'pdf'">
+             <pdf-viewer [src]="pdfSource" [show-all]="false" [page]="1" 
+              [original-size]="false"
+            ></pdf-viewer>
 
-      <img mat-card-image src="{{itemsList[selectedItemIndex].path}}" alt="Photo of a Shiba Inu" />
+        </div>
+      </ng-container>
       <mat-card-content>
         <table>
           <tr>
